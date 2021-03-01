@@ -48250,18 +48250,43 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            keywords: null,
+            searchFields: {
+                name: null,
+                bedrooms: null,
+                bathrooms: null,
+                storeys: null,
+                garages: null,
+                price: {
+                    min: null,
+                    max: null
+                }
+            },
             homesearches: []
         };
     },
 
     watch: {
-        keywords: function keywords(after, before) {
-            this.searchName();
+        searchFields: {
+            handler: function handler(val) {
+                this.searchName();
+            },
+
+            deep: true
         }
     },
 
@@ -48279,7 +48304,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         searchName: function searchName() {
             var app = this;
-            axios.get('/api/v1/search', { params: { keywords: this.keywords } }).then(function (resp) {
+            axios.get('/api/v1/search', { params: { searchFields: this.searchFields } }).then(function (resp) {
                 app.homesearches = resp.data;
             }).catch(function (resp) {
                 console.log(resp);
@@ -48300,52 +48325,223 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "panel panel-default" }, [
-      _c("div", { staticClass: "panel-heading" }, [_vm._v("Homes list")]),
+      _c("div", { staticClass: "panel-heading" }, [
+        _vm._v("Search by fields:")
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "panel-body" }, [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.keywords,
-              expression: "keywords"
-            }
-          ],
-          attrs: { type: "text" },
-          domProps: { value: _vm.keywords },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+        _c("p", [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.searchFields.name,
+                expression: "searchFields.name"
               }
-              _vm.keywords = $event.target.value
+            ],
+            attrs: { type: "text" },
+            domProps: { value: _vm.searchFields.name },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.searchFields, "name", $event.target.value)
+              }
             }
-          }
-        }),
+          }),
+          _vm._v(" - name")
+        ]),
         _vm._v(" "),
-        _c("table", { staticClass: "table table-bordered table-striped" }, [
-          _vm._m(0),
-          _vm._v(" "),
-          _c(
-            "tbody",
-            _vm._l(_vm.homesearches, function(homesearch) {
-              return _c("tr", { key: homesearch.id }, [
-                _c("td", [_vm._v(_vm._s(homesearch.name))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(homesearch.price))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(homesearch.bedrooms))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(homesearch.storeys))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(homesearch.garages))])
-              ])
-            }),
-            0
-          )
+        _c("p", [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model.number",
+                value: _vm.searchFields.price.min,
+                expression: "searchFields.price.min",
+                modifiers: { number: true }
+              }
+            ],
+            attrs: { type: "number" },
+            domProps: { value: _vm.searchFields.price.min },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.searchFields.price,
+                  "min",
+                  _vm._n($event.target.value)
+                )
+              },
+              blur: function($event) {
+                return _vm.$forceUpdate()
+              }
+            }
+          }),
+          _vm._v(" - min price")
+        ]),
+        _vm._v(" "),
+        _c("p", [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model.number",
+                value: _vm.searchFields.price.max,
+                expression: "searchFields.price.max",
+                modifiers: { number: true }
+              }
+            ],
+            attrs: { type: "number" },
+            domProps: { value: _vm.searchFields.price.max },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.searchFields.price,
+                  "max",
+                  _vm._n($event.target.value)
+                )
+              },
+              blur: function($event) {
+                return _vm.$forceUpdate()
+              }
+            }
+          }),
+          _vm._v(" - max price")
+        ]),
+        _vm._v(" "),
+        _c("p", [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model.number",
+                value: _vm.searchFields.bathrooms,
+                expression: "searchFields.bathrooms",
+                modifiers: { number: true }
+              }
+            ],
+            attrs: { type: "number" },
+            domProps: { value: _vm.searchFields.bathrooms },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.searchFields,
+                  "bathrooms",
+                  _vm._n($event.target.value)
+                )
+              },
+              blur: function($event) {
+                return _vm.$forceUpdate()
+              }
+            }
+          }),
+          _vm._v(" - bathrooms")
+        ]),
+        _vm._v(" "),
+        _c("p", [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model.number",
+                value: _vm.searchFields.storeys,
+                expression: "searchFields.storeys",
+                modifiers: { number: true }
+              }
+            ],
+            attrs: { type: "number" },
+            domProps: { value: _vm.searchFields.storeys },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.searchFields,
+                  "storeys",
+                  _vm._n($event.target.value)
+                )
+              },
+              blur: function($event) {
+                return _vm.$forceUpdate()
+              }
+            }
+          }),
+          _vm._v(" - storey")
+        ]),
+        _vm._v(" "),
+        _c("p", [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model.number",
+                value: _vm.searchFields.garages,
+                expression: "searchFields.garages",
+                modifiers: { number: true }
+              }
+            ],
+            attrs: { type: "number" },
+            domProps: { value: _vm.searchFields.garages },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.searchFields,
+                  "garages",
+                  _vm._n($event.target.value)
+                )
+              },
+              blur: function($event) {
+                return _vm.$forceUpdate()
+              }
+            }
+          }),
+          _vm._v(" - garages")
         ])
       ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "panel-body" }, [
+      _vm.homesearches.length > 0
+        ? _c("table", { staticClass: "table table-bordered table-striped" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.homesearches, function(homesearch) {
+                return _c("tr", { key: homesearch.id }, [
+                  _c("td", [_vm._v(_vm._s(homesearch.name))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(homesearch.price))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(homesearch.bedrooms))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(homesearch.bathrooms))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(homesearch.storeys))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(homesearch.garages))])
+                ])
+              }),
+              0
+            )
+          ])
+        : _c("div", [_vm._v("\n            No results found...\n        ")])
     ])
   ])
 }
@@ -48361,6 +48557,8 @@ var staticRenderFns = [
         _c("th", [_vm._v("Price")]),
         _vm._v(" "),
         _c("th", [_vm._v("Bedrooms")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Bathrooms")]),
         _vm._v(" "),
         _c("th", [_vm._v("Storeys")]),
         _vm._v(" "),
