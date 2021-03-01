@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use DB;
-use App\Homesearch;
+use App\Models\Homesearch;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -11,7 +11,7 @@ class HomesearchesController extends Controller
 {
     public function index()
     {
-        return Homesearch::all();
+        return Homesearch::paginate(5);
     }
 
     public function search(Request $request)
@@ -43,6 +43,6 @@ class HomesearchesController extends Controller
             $query->garages($searchFields->garages);
         }
 
-        return response()->json($query->get());
+        return response()->json($query->paginate(5));
     }
 }

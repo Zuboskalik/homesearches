@@ -8,9 +8,13 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 import VueRouter from 'vue-router';
 
 window.Vue.use(VueRouter);
+window.Vue.use(ElementUI);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -30,6 +34,8 @@ const routes = [
 ]
 
 const router = new VueRouter({ routes })
+
+Vue.component('paginate', require('vuejs-paginate'));
 
 const app = new Vue({ router }).$mount('#app')
 
