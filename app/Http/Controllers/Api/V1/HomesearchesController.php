@@ -16,31 +16,31 @@ class HomesearchesController extends Controller
 
     public function search(Request $request)
     {
-        $query = DB::table('homesearches');
         $searchFields = json_decode($request->searchFields);
+        $query = Homesearch::query();
 
         if ($searchFields->name) {
-            $query->where('name', 'like', '%' . $searchFields->name . '%');
+            $query->name($searchFields->name);
         }
         if ($searchFields->price) {
             if ($searchFields->price->min) {
-                $query->where('price', '>=', $searchFields->price->min);
+                $query->priceMin($searchFields->price->min);
             }
             if ($searchFields->price->max) {
-                $query->where('price', '<=', $searchFields->price->max);
+                $query->priceMax($searchFields->price->max);
             }
         }
         if ($searchFields->bedrooms) {
-            $query->where('bedrooms', $searchFields->bedrooms);
+            $query->bedrooms($searchFields->bedrooms);
         }
         if ($searchFields->bathrooms) {
-            $query->where('bathrooms', $searchFields->bathrooms);
+            $query->bathrooms($searchFields->bathrooms);
         }
         if ($searchFields->storeys) {
-            $query->where('storeys', $searchFields->storeys);
+            $query->storeys($searchFields->storeys);
         }
         if ($searchFields->garages) {
-            $query->where('garages', $searchFields->garages);
+            $query->garages($searchFields->garages);
         }
 
         return response()->json($query->get());
