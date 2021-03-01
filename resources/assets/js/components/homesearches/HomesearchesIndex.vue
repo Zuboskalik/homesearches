@@ -13,7 +13,8 @@
                 
             </div>
         </div>
-        <div class="panel-body">
+        <div v-if="searchNow == true" class="panel-body">Loading...</div>
+        <div v-else class="panel-body">
             <table v-if="homesearches.length > 0" class="table table-bordered table-striped">
                 <thead>
                 <tr>
@@ -47,7 +48,7 @@
     export default {
         data: function () {
             return {                
-                searchFields: {
+                searchFields : {
                     name : null,
                     bedrooms : null,
                     bathrooms : null,
@@ -58,7 +59,8 @@
                         max : null
                     },
                 },
-                homesearches: []
+                homesearches : [],
+                searchNow : false
             }
         },
 
@@ -85,9 +87,11 @@
 
         methods: {      
             searchName() {
-                var app = this;      
+                var app = this;
+                app.searchNow = true;      
                 axios.get('/api/v1/search', { params: { searchFields : this.searchFields } })
                     .then(function (resp) {
+                    app.searchNow = false;
                         app.homesearches = resp.data;
                     })
                     .catch(function (resp) {

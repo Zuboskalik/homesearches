@@ -48261,6 +48261,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -48276,7 +48277,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     max: null
                 }
             },
-            homesearches: []
+            homesearches: [],
+            searchNow: false
         };
     },
 
@@ -48304,7 +48306,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         searchName: function searchName() {
             var app = this;
+            app.searchNow = true;
             axios.get('/api/v1/search', { params: { searchFields: this.searchFields } }).then(function (resp) {
+                app.searchNow = false;
                 app.homesearches = resp.data;
             }).catch(function (resp) {
                 console.log(resp);
@@ -48516,33 +48520,39 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "panel-body" }, [
-      _vm.homesearches.length > 0
-        ? _c("table", { staticClass: "table table-bordered table-striped" }, [
-            _vm._m(0),
-            _vm._v(" "),
-            _c(
-              "tbody",
-              _vm._l(_vm.homesearches, function(homesearch) {
-                return _c("tr", { key: homesearch.id }, [
-                  _c("td", [_vm._v(_vm._s(homesearch.name))]),
+    _vm.searchNow == true
+      ? _c("div", { staticClass: "panel-body" }, [_vm._v("Loading...")])
+      : _c("div", { staticClass: "panel-body" }, [
+          _vm.homesearches.length > 0
+            ? _c(
+                "table",
+                { staticClass: "table table-bordered table-striped" },
+                [
+                  _vm._m(0),
                   _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(homesearch.price))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(homesearch.bedrooms))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(homesearch.bathrooms))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(homesearch.storeys))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(homesearch.garages))])
-                ])
-              }),
-              0
-            )
-          ])
-        : _c("div", [_vm._v("\n            No results found...\n        ")])
-    ])
+                  _c(
+                    "tbody",
+                    _vm._l(_vm.homesearches, function(homesearch) {
+                      return _c("tr", { key: homesearch.id }, [
+                        _c("td", [_vm._v(_vm._s(homesearch.name))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(homesearch.price))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(homesearch.bedrooms))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(homesearch.bathrooms))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(homesearch.storeys))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(homesearch.garages))])
+                      ])
+                    }),
+                    0
+                  )
+                ]
+              )
+            : _c("div", [_vm._v("\n            No results found...\n        ")])
+        ])
   ])
 }
 var staticRenderFns = [
