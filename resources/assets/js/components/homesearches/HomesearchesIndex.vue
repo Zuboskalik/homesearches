@@ -4,12 +4,12 @@
         <div class="panel panel-default">
             <div class="panel-heading">Search by fields:</div>
             <div class="panel-body">
-                <p><input type="text" v-model="searchFields.name"> - name</p>
-                <p><input type="number" v-model.number="searchFields.price.min"> - min price</p>
-                <p><input type="number" v-model.number="searchFields.price.max"> - max price</p>
-                <p><input type="number" v-model.number="searchFields.bathrooms"> - bathrooms</p>
-                <p><input type="number" v-model.number="searchFields.storeys"> - storey</p>
-                <p><input type="number" v-model.number="searchFields.garages"> - garages</p>
+                <p><input type="text" v-model="searchFields.name" name = "name"> - name</p>
+                <p><input type="number" v-model.number="searchFields.price.min" name = "pricemin"> - min price</p>
+                <p><input type="number" v-model.number="searchFields.price.max" name = "pricemax"> - max price</p>
+                <p><input type="number" v-model.number="searchFields.bathrooms" name = "bathrooms"> - bathrooms</p>
+                <p><input type="number" v-model.number="searchFields.storeys" name = "storeys"> - storey</p>
+                <p><input type="number" v-model.number="searchFields.garages" name = "garages"> - garages</p>
                 
             </div>
         </div>
@@ -49,14 +49,14 @@
         data: function () {
             return {                
                 searchFields : {
-                    name : null,
-                    bedrooms : null,
-                    bathrooms : null,
-                    storeys : null,
-                    garages : null,
+                    name : "",
+                    bedrooms : "",
+                    bathrooms : "",
+                    storeys : "",
+                    garages : "",
                     price : {
-                        min : null, 
-                        max : null
+                        min : "", 
+                        max : ""
                     },
                 },
                 homesearches : [],

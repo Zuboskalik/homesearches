@@ -23,23 +23,23 @@ class HomesearchesController extends Controller
             $query->name($searchFields->name);
         }
         if ($searchFields->price) {
-            if ($searchFields->price->min) {
+            if ($searchFields->price->min !== "") {
                 $query->priceMin($searchFields->price->min);
             }
-            if ($searchFields->price->max) {
+            if ($searchFields->price->max !== "") {
                 $query->priceMax($searchFields->price->max);
             }
         }
-        if ($searchFields->bedrooms) {
+        if ($searchFields->bedrooms !== "") {
             $query->bedrooms($searchFields->bedrooms);
         }
-        if ($searchFields->bathrooms) {
+        if ($searchFields->bathrooms !== "") {
             $query->bathrooms($searchFields->bathrooms);
         }
-        if ($searchFields->storeys) {
+        if ($searchFields->storeys !== "") {
             $query->storeys($searchFields->storeys);
         }
-        if ($searchFields->garages) {
+        if ($searchFields->garages !== "") {
             $query->garages($searchFields->garages);
         }
 

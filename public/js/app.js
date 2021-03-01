@@ -48267,14 +48267,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             searchFields: {
-                name: null,
-                bedrooms: null,
-                bathrooms: null,
-                storeys: null,
-                garages: null,
+                name: "",
+                bedrooms: "",
+                bathrooms: "",
+                storeys: "",
+                garages: "",
                 price: {
-                    min: null,
-                    max: null
+                    min: "",
+                    max: ""
                 }
             },
             homesearches: [],
@@ -48344,7 +48344,7 @@ var render = function() {
                 expression: "searchFields.name"
               }
             ],
-            attrs: { type: "text" },
+            attrs: { type: "text", name: "name" },
             domProps: { value: _vm.searchFields.name },
             on: {
               input: function($event) {
@@ -48369,7 +48369,7 @@ var render = function() {
                 modifiers: { number: true }
               }
             ],
-            attrs: { type: "number" },
+            attrs: { type: "number", name: "pricemin" },
             domProps: { value: _vm.searchFields.price.min },
             on: {
               input: function($event) {
@@ -48401,7 +48401,7 @@ var render = function() {
                 modifiers: { number: true }
               }
             ],
-            attrs: { type: "number" },
+            attrs: { type: "number", name: "pricemax" },
             domProps: { value: _vm.searchFields.price.max },
             on: {
               input: function($event) {
@@ -48433,7 +48433,7 @@ var render = function() {
                 modifiers: { number: true }
               }
             ],
-            attrs: { type: "number" },
+            attrs: { type: "number", name: "bathrooms" },
             domProps: { value: _vm.searchFields.bathrooms },
             on: {
               input: function($event) {
@@ -48465,7 +48465,7 @@ var render = function() {
                 modifiers: { number: true }
               }
             ],
-            attrs: { type: "number" },
+            attrs: { type: "number", name: "storeys" },
             domProps: { value: _vm.searchFields.storeys },
             on: {
               input: function($event) {
@@ -48497,7 +48497,7 @@ var render = function() {
                 modifiers: { number: true }
               }
             ],
-            attrs: { type: "number" },
+            attrs: { type: "number", name: "garages" },
             domProps: { value: _vm.searchFields.garages },
             on: {
               input: function($event) {
