@@ -48262,6 +48262,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -48334,189 +48335,130 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "panel-body" }, [
-        _c("p", [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
+        _c(
+          "p",
+          [
+            _c("el-input", {
+              attrs: { placeholder: "Name", type: "text", name: "name" },
+              model: {
                 value: _vm.searchFields.name,
+                callback: function($$v) {
+                  _vm.$set(_vm.searchFields, "name", $$v)
+                },
                 expression: "searchFields.name"
               }
-            ],
-            attrs: { type: "text", name: "name" },
-            domProps: { value: _vm.searchFields.name },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.searchFields, "name", $event.target.value)
-              }
-            }
-          }),
-          _vm._v(" - name")
-        ]),
+            })
+          ],
+          1
+        ),
         _vm._v(" "),
-        _c("p", [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model.number",
+        _c(
+          "p",
+          [
+            _c("el-input-number", {
+              attrs: { type: "number", name: "pricemin", step: 10000 },
+              model: {
                 value: _vm.searchFields.price.min,
-                expression: "searchFields.price.min",
-                modifiers: { number: true }
+                callback: function($$v) {
+                  _vm.$set(_vm.searchFields.price, "min", _vm._n($$v))
+                },
+                expression: "searchFields.price.min"
               }
-            ],
-            attrs: { type: "number", name: "pricemin" },
-            domProps: { value: _vm.searchFields.price.min },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(
-                  _vm.searchFields.price,
-                  "min",
-                  _vm._n($event.target.value)
-                )
-              },
-              blur: function($event) {
-                return _vm.$forceUpdate()
-              }
-            }
-          }),
-          _vm._v(" - min price")
-        ]),
+            }),
+            _vm._v(" Min price")
+          ],
+          1
+        ),
         _vm._v(" "),
-        _c("p", [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model.number",
+        _c(
+          "p",
+          [
+            _c("el-input-number", {
+              attrs: { type: "number", name: "pricemax", step: 10000 },
+              model: {
                 value: _vm.searchFields.price.max,
-                expression: "searchFields.price.max",
-                modifiers: { number: true }
+                callback: function($$v) {
+                  _vm.$set(_vm.searchFields.price, "max", _vm._n($$v))
+                },
+                expression: "searchFields.price.max"
               }
-            ],
-            attrs: { type: "number", name: "pricemax" },
-            domProps: { value: _vm.searchFields.price.max },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(
-                  _vm.searchFields.price,
-                  "max",
-                  _vm._n($event.target.value)
-                )
-              },
-              blur: function($event) {
-                return _vm.$forceUpdate()
-              }
-            }
-          }),
-          _vm._v(" - max price")
-        ]),
+            }),
+            _vm._v(" Max price")
+          ],
+          1
+        ),
         _vm._v(" "),
-        _c("p", [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model.number",
+        _c(
+          "p",
+          [
+            _c("el-input-number", {
+              attrs: { type: "number", name: "bedrooms" },
+              model: {
+                value: _vm.searchFields.bedrooms,
+                callback: function($$v) {
+                  _vm.$set(_vm.searchFields, "bedrooms", _vm._n($$v))
+                },
+                expression: "searchFields.bedrooms"
+              }
+            }),
+            _vm._v(" Bedrooms")
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "p",
+          [
+            _c("el-input-number", {
+              attrs: { type: "number", name: "bathrooms" },
+              model: {
                 value: _vm.searchFields.bathrooms,
-                expression: "searchFields.bathrooms",
-                modifiers: { number: true }
+                callback: function($$v) {
+                  _vm.$set(_vm.searchFields, "bathrooms", _vm._n($$v))
+                },
+                expression: "searchFields.bathrooms"
               }
-            ],
-            attrs: { type: "number", name: "bathrooms" },
-            domProps: { value: _vm.searchFields.bathrooms },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(
-                  _vm.searchFields,
-                  "bathrooms",
-                  _vm._n($event.target.value)
-                )
-              },
-              blur: function($event) {
-                return _vm.$forceUpdate()
-              }
-            }
-          }),
-          _vm._v(" - bathrooms")
-        ]),
+            }),
+            _vm._v(" Bathrooms")
+          ],
+          1
+        ),
         _vm._v(" "),
-        _c("p", [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model.number",
+        _c(
+          "p",
+          [
+            _c("el-input-number", {
+              attrs: { type: "number", name: "storeys" },
+              model: {
                 value: _vm.searchFields.storeys,
-                expression: "searchFields.storeys",
-                modifiers: { number: true }
+                callback: function($$v) {
+                  _vm.$set(_vm.searchFields, "storeys", _vm._n($$v))
+                },
+                expression: "searchFields.storeys"
               }
-            ],
-            attrs: { type: "number", name: "storeys" },
-            domProps: { value: _vm.searchFields.storeys },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(
-                  _vm.searchFields,
-                  "storeys",
-                  _vm._n($event.target.value)
-                )
-              },
-              blur: function($event) {
-                return _vm.$forceUpdate()
-              }
-            }
-          }),
-          _vm._v(" - storey")
-        ]),
+            }),
+            _vm._v(" Storeys")
+          ],
+          1
+        ),
         _vm._v(" "),
-        _c("p", [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model.number",
+        _c(
+          "p",
+          [
+            _c("el-input-number", {
+              attrs: { type: "number", name: "garages" },
+              model: {
                 value: _vm.searchFields.garages,
-                expression: "searchFields.garages",
-                modifiers: { number: true }
+                callback: function($$v) {
+                  _vm.$set(_vm.searchFields, "garages", _vm._n($$v))
+                },
+                expression: "searchFields.garages"
               }
-            ],
-            attrs: { type: "number", name: "garages" },
-            domProps: { value: _vm.searchFields.garages },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(
-                  _vm.searchFields,
-                  "garages",
-                  _vm._n($event.target.value)
-                )
-              },
-              blur: function($event) {
-                return _vm.$forceUpdate()
-              }
-            }
-          }),
-          _vm._v(" - garages")
-        ])
+            }),
+            _vm._v(" Garages")
+          ],
+          1
+        )
       ])
     ]),
     _vm._v(" "),

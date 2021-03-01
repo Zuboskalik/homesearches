@@ -4,12 +4,13 @@
         <div class="panel panel-default">
             <div class="panel-heading">Search by fields:</div>
             <div class="panel-body">
-                <p><input type="text" v-model="searchFields.name" name = "name"> - name</p>
-                <p><input type="number" v-model.number="searchFields.price.min" name = "pricemin"> - min price</p>
-                <p><input type="number" v-model.number="searchFields.price.max" name = "pricemax"> - max price</p>
-                <p><input type="number" v-model.number="searchFields.bathrooms" name = "bathrooms"> - bathrooms</p>
-                <p><input type="number" v-model.number="searchFields.storeys" name = "storeys"> - storey</p>
-                <p><input type="number" v-model.number="searchFields.garages" name = "garages"> - garages</p>
+                <p><el-input placeholder="Name" type="text" v-model="searchFields.name" name = "name"></el-input></p>
+                <p><el-input-number type="number" v-model.number="searchFields.price.min" name = "pricemin" :step="10000"></el-input-number> Min price</p>
+                <p><el-input-number type="number" v-model.number="searchFields.price.max" name = "pricemax" :step="10000"></el-input-number> Max price</p>
+                <p><el-input-number type="number" v-model.number="searchFields.bedrooms" name = "bedrooms"></el-input-number> Bedrooms</p>
+                <p><el-input-number type="number" v-model.number="searchFields.bathrooms" name = "bathrooms"></el-input-number> Bathrooms</p>
+                <p><el-input-number type="number" v-model.number="searchFields.storeys" name = "storeys"></el-input-number> Storeys</p>
+                <p><el-input-number type="number" v-model.number="searchFields.garages" name = "garages"></el-input-number> Garages</p>
                 
             </div>
         </div>
